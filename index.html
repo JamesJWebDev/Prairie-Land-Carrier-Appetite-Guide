@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prairie Land Carrier's Appetite Guide</title>
+    <link rel="icon" type="image/png" href="assets/prairie-land-logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-left">
+        <img
+          class="logo-image"
+          src="assets/prairie-land-logo.png"
+          alt="Prairie Land Insurance logo"
+        />
+        <div class="brand-text">
+          <h1>Prairie Land Insurance</h1>
+          <p class="subtitle">Carrier's Appetite Guide</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="card">
+        <div class="tab-header">
+          <h2>Quote & Carrier Appetite Details</h2>
+          <div class="tabs-row">
+            <div id="tabsContainer" class="tabs-container"></div>
+            <button type="button" id="addTabBtn" class="tab-add-button">+ New Tab</button>
+          </div>
+        </div>
+
+        <form id="rating-form" class="form-grid">
+          <div class="field">
+            <label for="clientName">Client name</label>
+            <input id="clientName" name="clientName" type="text" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" min="16" max="100" />
+          </div>
+
+          <div class="field">
+            <label for="productType">Policy type</label>
+            <select id="productType" name="productType">
+              <option value="auto">Personal Auto</option>
+              <option value="home">Homeowners</option>
+              <option value="commercial">Small Commercial</option>
+            </select>
+          </div>
+
+          <div class="field section-home">
+            <label for="occupancy">Home occupancy (for home quotes)</label>
+            <select id="occupancy" name="occupancy">
+              <option value="owner_primary">Owner-occupied primary</option>
+              <option value="owner_secondary">Owner-occupied secondary</option>
+              <option value="rental_or_airbnb">Rental / Airbnb / seasonal</option>
+              <option value="vacant_or_other">Vacant / estate / student housing / other</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="continuousAuto">Continuous auto insurance (last 6+ months)</label>
+            <select id="continuousAuto" name="continuousAuto">
+              <option value="yes">Yes – continuous insurance 6+ months</option>
+              <option value="no">No – lapse / no prior in last 6 months</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="atFaultAccidents">At-fault accidents (last 5 years)</label>
+            <select id="atFaultAccidents" name="atFaultAccidents">
+              <option value="0">None</option>
+              <option value="1">One at-fault accident</option>
+              <option value="2plus">Two or more at-fault accidents</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="autoCompLosses">Comprehensive losses (last 5 years)</label>
+            <select id="autoCompLosses" name="autoCompLosses">
+              <option value="0-1">0–1 comp losses</option>
+              <option value="2-3">2–3 comp losses</option>
+              <option value="4plus">4+ comp losses</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="movingViolations">Moving / vehicle code violations</label>
+            <select id="movingViolations" name="movingViolations">
+              <option value="none">None</option>
+              <option value="few_minor">1–2 minor violations</option>
+              <option value="many_or_major">3+ or major speeding (20+ over)</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="vehicleUse">Vehicle use</label>
+            <select id="vehicleUse" name="vehicleUse">
+              <option value="personal">Personal / commute only</option>
+              <option value="business">Business use (contractor / realtor / agent etc.)</option>
+              <option value="tnc">Rideshare / delivery (Uber, Lyft, DoorDash, etc.)</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="annualMileage">Annual mileage (per vehicle)</label>
+            <select id="annualMileage" name="annualMileage">
+              <option value="<15000">Under 15,000 miles</option>
+              <option value="15000-25000">15,000–25,000 miles</option>
+              <option value=">25000">Over 25,000 miles</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label for="vehicleType">Vehicle type</label>
+            <select id="vehicleType" name="vehicleType">
+              <option value="standard">Standard private passenger auto</option>
+              <option value="sports_or_perf">Sports / high performance</option>
+              <option value="modified_or_not_roadworthy">Modified / not roadworthy / in process of rebuild</option>
+            </select>
+          </div>
+
+          <div class="field section-auto">
+            <label>Previously declined / nonrenewed / cancelled by Progressive?</label>
+            <div class="inline-options">
+              <label><input type="radio" name="progressiveDeclined" value="yes" /> Yes</label>
+              <label><input type="radio" name="progressiveDeclined" value="no" checked /> No</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="claimsHistory">Claims in last 5 years</label>
+            <select id="claimsHistory" name="claimsHistory">
+              <option value="none">None</option>
+              <option value="one">1 claim</option>
+              <option value="multiple">2+ claims</option>
+            </select>
+          </div>
+
+          <div class="field section-home">
+            <label for="dwellingValueBand">Approx. dwelling coverage amount</label>
+            <select id="dwellingValueBand" name="dwellingValueBand">
+              <option value="<500k">Under $500k</option>
+              <option value="500-1000k">$500k–$1M</option>
+              <option value="1000-1500k">$1M–$1.5M</option>
+              <option value=">1500k">Over $1.5M</option>
+            </select>
+          </div>
+
+          <div class="field section-home">
+            <label>Progressive auto policy in force?</label>
+            <div class="inline-options">
+              <label><input type="radio" name="progressiveAuto" value="yes" /> Yes</label>
+              <label><input type="radio" name="progressiveAuto" value="no" checked /> No</label>
+            </div>
+          </div>
+
+          <div class="field section-home">
+            <label>First-time home buyer?</label>
+            <div class="inline-options">
+              <label><input type="radio" name="firstTimeBuyer" value="yes" /> Yes</label>
+              <label><input type="radio" name="firstTimeBuyer" value="no" checked /> No</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="priorCarrier">Continuous insurance (years)</label>
+            <select id="priorCarrier" name="priorCarrier">
+              <option value="0">None</option>
+              <option value="1">1–2 years</option>
+              <option value="3">3–5 years</option>
+              <option value="6">6+ years</option>
+            </select>
+          </div>
+
+          <div class="field field-full">
+            <label>Multi-policy (bundled)?</label>
+            <div class="inline-options">
+              <label><input type="radio" name="multiPolicy" value="yes" checked /> Yes</label>
+              <label><input type="radio" name="multiPolicy" value="no" /> No</label>
+            </div>
+          </div>
+
+          <div class="field field-full section-home">
+            <label>Dogs on premises (for home quotes)</label>
+            <div class="inline-options">
+              <label
+                ><input type="radio" name="dogRisk" value="none" checked />
+                None / no dog exposure</label
+              >
+              <label
+                ><input type="radio" name="dogRisk" value="ok" />
+                Dogs, no bite history / restricted breeds</label
+              >
+              <label
+                ><input type="radio" name="dogRisk" value="restricted" />
+                Restricted breed or bite history</label
+              >
+            </div>
+          </div>
+
+          <div class="field field-full section-home">
+            <label>Home condition flags (for home quotes)</label>
+            <div class="inline-options">
+              <label
+                ><input type="checkbox" id="oldSystemsFlag" name="oldSystemsFlag" />
+                Older electrical / plumbing / heating concerns</label
+              >
+              <label
+                ><input type="checkbox" id="hazardFlag" name="hazardFlag" />
+                Hazards: trampoline, unfenced pool, debris, etc.</label
+              >
+            </div>
+          </div>
+
+          <div class="field section-home">
+            <label for="roofMaterial">Roof material / type</label>
+            <select id="roofMaterial" name="roofMaterial">
+              <option value="asphalt_arch">Asphalt architectural/composition shingles</option>
+              <option value="asphalt_3tab">Asphalt 3-tab shingles</option>
+              <option value="metal_or_slate">Metal / slate / clay tile</option>
+              <option value="flat_membrane">Flat roof (rubber / membrane / built-up)</option>
+              <option value="wood_shake">Wood shingle / wood shake</option>
+              <option value="rolled_tar">Rolled / tar & gravel / older tin or corrugated</option>
+              <option value="other">Other / unsure</option>
+            </select>
+          </div>
+
+          <div class="field section-home">
+            <label for="roofAgeYears">Exact roof age (years)</label>
+            <input
+              id="roofAgeYears"
+              name="roofAgeYears"
+              type="number"
+              min="0"
+              max="80"
+              placeholder="e.g. 12"
+            />
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-button">Suggest Carriers</button>
+            <button type="button" id="resetBtn" class="secondary-button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card result-card">
+        <h2>Recommended Markets</h2>
+        <div id="resultSummary" class="result-summary">Fill in the form and click "Suggest Carriers".</div>
+        <div id="resultDetails" class="result-details"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span class="footer-note">Prairie Land Insurance Agency Inc.™ 2026</span>
+    </footer>
+
+    <script type="module" src="renderer.js"></script>
+  </body>
+  </html>
+

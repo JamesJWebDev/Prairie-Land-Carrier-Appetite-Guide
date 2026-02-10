@@ -1,0 +1,59 @@
+{
+  "name": "prairie-land-carriers-appetite-guide",
+  "version": "1.0.0",
+  "description": "Prairie Land Carrier's Appetite Guide – internal Electron desktop tool to suggest carrier markets based on underwriting-style inputs.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win",
+    "build-icon": "node scripts/build-icon.js",
+    "pack": "node scripts/pack.js",
+    "test": "node node_modules/vitest/vitest.mjs run",
+    "test:watch": "node node_modules/vitest/vitest.mjs",
+    "test:coverage": "node node_modules/vitest/vitest.mjs run --coverage"
+  },
+  "keywords": [],
+  "author": "Prairie Land Insurance Agency Inc.",
+  "license": "ISC",
+  "type": "commonjs",
+  "build": {
+    "appId": "com.prairieland.appetiteguide",
+    "productName": "Prairie Land Carrier's Appetite Guide",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js",
+      "styles.css",
+      "assets/**/*",
+      "js/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "dir",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^40.2.1",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2",
+    "png-to-ico": "^2.1.1",
+    "sharp": "^0.33.5",
+    "vitest": "^2.1.0",
+    "jsdom": "^25.0.0",
+    "@vitest/coverage-v8": "^2.1.0"
+  }
+}

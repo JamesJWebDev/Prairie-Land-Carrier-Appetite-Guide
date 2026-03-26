@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { calculateCarrierSuggestions } from '../js/suggestions.js';
+import { calculateCarrierSuggestions } from '../src/renderer/lib/suggestions.ts';
 
 describe('calculateCarrierSuggestions', () => {
   it('returns productKey, carriers array, and explanations', () => {

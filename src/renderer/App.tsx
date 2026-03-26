@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { RatingForm, FormValues, createEmptyInputs } from './components/RatingForm'
 import { Results } from './components/Results'
 import { calculateCarrierSuggestions, SuggestionResult } from './lib/suggestions'
@@ -26,9 +26,23 @@ function getTabLabel(profile: Profile, index: number): string {
   return `Quote ${index + 1}`
 }
 
+type Theme = 'light' | 'dark'
+
 const App: React.FC = () => {
   const [profiles, setProfiles] = useState<Profile[]>([makeProfile('profile-1')])
   const [activeId, setActiveId] = useState<string>('profile-1')
+  const [theme, setTheme] = useState<Theme>(() => {
+    return (localStorage.getItem('pl-theme') as Theme) || 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('pl-theme', theme)
+  }, [theme])
+
+  function toggleTheme() {
+    setTheme((t) => (t === 'light' ? 'dark' : 'light'))
+  }
 
   const active = profiles.find((p) => p.id === activeId) || profiles[0]
 
@@ -87,6 +101,14 @@ const App: React.FC = () => {
             <p className="subtitle">Carrier's Appetite Guide</p>
           </div>
         </div>
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
+          {theme === 'light' ? '🌙' : '☀️'}
+        </button>
       </header>
 
       <main className="app-main">

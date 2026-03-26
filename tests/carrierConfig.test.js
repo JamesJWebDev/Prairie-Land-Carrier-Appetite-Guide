@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CARRIER_CONFIG } from '../js/carrierConfig.js';
+import { CARRIER_CONFIG } from '../src/renderer/lib/carrierConfig.ts';
 
 describe('CARRIER_CONFIG', () => {
   it('has auto, home, and commercial product keys', () => {

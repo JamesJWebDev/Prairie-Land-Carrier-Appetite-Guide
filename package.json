@@ -2,12 +2,12 @@
   "name": "prairie-land-carriers-appetite-guide",
   "version": "1.0.0",
   "description": "Prairie Land Carrier's Appetite Guide – internal Electron desktop tool to suggest carrier markets based on underwriting-style inputs.",
-  "main": "main.js",
+  "main": "dist/main/index.js",
   "scripts": {
-    "start": "electron .",
-    "build": "electron-builder --win",
+    "start": "electron-vite dev",
+    "build": "electron-vite build",
     "build-icon": "node scripts/build-icon.js",
-    "pack": "node scripts/pack.js",
+    "pack": "electron-vite build && node scripts/pack.js",
     "test": "node node_modules/vitest/vitest.mjs run",
     "test:watch": "node node_modules/vitest/vitest.mjs",
     "test:coverage": "node node_modules/vitest/vitest.mjs run --coverage"
@@ -23,13 +23,8 @@
       "output": "dist"
     },
     "files": [
-      "main.js",
-      "preload.js",
-      "index.html",
-      "renderer.js",
-      "styles.css",
-      "assets/**/*",
-      "js/**/*"
+      "dist/**/*",
+      "assets/**/*"
     ],
     "win": {
       "target": [
@@ -47,13 +42,23 @@
     }
   },
   "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "@vitest/coverage-v8": "^2.1.0",
     "electron": "^40.2.1",
     "electron-builder": "^25.1.8",
     "electron-packager": "^17.1.2",
+    "electron-vite": "^5.0.0",
+    "jsdom": "^25.0.0",
     "png-to-ico": "^2.1.1",
     "sharp": "^0.33.5",
-    "vitest": "^2.1.0",
-    "jsdom": "^25.0.0",
-    "@vitest/coverage-v8": "^2.1.0"
+    "typescript": "^6.0.2",
+    "vite": "^8.0.2",
+    "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   }
 }
